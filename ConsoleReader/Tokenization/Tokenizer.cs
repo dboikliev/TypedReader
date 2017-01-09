@@ -21,6 +21,13 @@ namespace ConsoleReader.Tokenization
                 }
                 else
                 {
+                    while (Environment.NewLine.Length > 1 &&
+                        Environment.NewLine.StartsWith(character.ToString()))
+                    {
+                        character = (char)Console.Read();
+                        isTokenizing = false;
+                    }
+
                     if (character == Options.Separator)
                     {
                         if (hasReachedToken)
@@ -28,18 +35,10 @@ namespace ConsoleReader.Tokenization
                             isTokenizing = false;
                         }
                     }
-                    else
+                    else if (isTokenizing)
                     {
                         hasReachedToken = true;
                         builder.Append(character);
-                    }
-
-
-                    while (Environment.NewLine.Length > 1 &&
-                        Environment.NewLine.StartsWith(character.ToString()))
-                    {
-                        character = (char)Console.Read();
-                        isTokenizing = false;
                     }
                 }
             }

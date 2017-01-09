@@ -1,4 +1,5 @@
-﻿using static ConsoleReader.Reader;
+﻿using ConsoleReader.Parsing;
+using System.IO;
 
 namespace ConsoleReader.TestClient
 {
@@ -6,10 +7,20 @@ namespace ConsoleReader.TestClient
     {
         static void Main(string[] args)
         {
-            var a = Next<byte>();
-            var b = Next<int>();
-            var text = Next<string>();
-            System.Console.WriteLine($"a: { a }, b: { b }, text: { text }");
+            Reader.TokenizerOptions.Separator = '|';
+            Reader.RegisterParser(new FileInfoTokenParser());
+
+            var file1 = Reader.Next<FileInfo>();
+            var file2 = Reader.Next<FileInfo>();
+            System.Console.WriteLine($"file1: { file1 }, file2: { file2 }");
+        }
+    }
+
+    class FileInfoTokenParser : TokenParser<FileInfo>
+    {
+        public override FileInfo Parse(string token)
+        {
+            return new FileInfo(token);
         }
     }
 }

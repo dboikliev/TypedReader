@@ -8,25 +8,25 @@ namespace ConsoleReader
 
     public static class Reader
     {
-        private static Dictionary<Type, Lazy<object>> Parsers { get; } =
-            new Dictionary<Type, Lazy<object>>();
+        private static Dictionary<Type, object> Parsers { get; } =
+            new Dictionary<Type, object>();
 
-        public static void RegisterParser<T>() where T : TokenParser<T>, new()
+        public static void RegisterParser<TType>(TokenParser<TType> parser)
         {
-            Parsers[typeof(T)] = new Lazy<object>(() => new T());
+            Parsers[typeof(TType)] = parser;
         }
 
         static Reader()
         {
-            Parsers[typeof(string)] = new Lazy<object>(() => new StringTokenParser());
-            Parsers[typeof(byte)] = new Lazy<object>(() => new ByteTokenParser());
-            Parsers[typeof(sbyte)] = new Lazy<object>(() => new SByteTokenParser());
-            Parsers[typeof(short)] = new Lazy<object>(() => new Int16TokenParser());
-            Parsers[typeof(ushort)] = new Lazy<object>(() => new UInt16TokenParser());
-            Parsers[typeof(int)] = new Lazy<object>(() => new Int32TokenParser());
-            Parsers[typeof(uint)] = new Lazy<object>(() => new UInt32TokenParser());
-            Parsers[typeof(long)] = new Lazy<object>(() => new Int64TokenParser());
-            Parsers[typeof(ulong)] = new Lazy<object>(() => new UInt64TokenParser());
+            Parsers[typeof(string)] = new StringTokenParser();
+            Parsers[typeof(byte)] = new ByteTokenParser();
+            Parsers[typeof(sbyte)] = new SByteTokenParser();
+            Parsers[typeof(short)] = new Int16TokenParser();
+            Parsers[typeof(ushort)] = new UInt16TokenParser();
+            Parsers[typeof(int)] = new Int32TokenParser();
+            Parsers[typeof(uint)] = new UInt32TokenParser();
+            Parsers[typeof(long)] = new Int64TokenParser();
+            Parsers[typeof(ulong)] = new UInt64TokenParser();
 
         }
 
@@ -36,7 +36,7 @@ namespace ConsoleReader
         public static T Next<T>()
         {
             var token = Tokenizer.Next();
-            var parsed = ((TokenParser<T>)Parsers[typeof(T)].Value).Parse(token);
+            var parsed = ((TokenParser<T>)Parsers[typeof(T)]).Parse(token);
             return parsed;
         }
     }
