@@ -1,11 +1,11 @@
 # ConsoleReader
 A simple library providing seamless interface for reading different types of inputs from the console.
 
-#Examples:
+##Examples
 
-##Reading from console:
+###1. Reading from console:
 
-###Code:
+####Code:
 
 ```csharp
 using static ConsoleReader.Reader;
@@ -25,12 +25,12 @@ namespace ConsoleReader.TestClient
 }
 ```
 
-###Console Input:
+####Console Input:
 
 ```
     123    456789   SomeText
 ```
-###Console Output:
+####Console Output:
 
 ```
 a: 123, b: 456789, text: SomeText
