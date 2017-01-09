@@ -39,6 +39,8 @@ a: 123, b: 456789, text: SomeText
 
 ###2. Registering a custom parser:
 
+####Code:
+
 ```csharp
 using ConsoleReader.Parsing;
 using System.IO;
