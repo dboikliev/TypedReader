@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{32C3343C-4B34-417A-B8C2-E4E1C348E7F1}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{848E4A01-5250-4046-8F13-B0435361322A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleReader</RootNamespace>
-    <AssemblyName>ConsoleReader</AssemblyName>
+    <RootNamespace>ConsoleReader.TestClient</RootNamespace>
+    <AssemblyName>ConsoleReader.TestClient</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,20 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parsing\Int16TokenParser - Copy.cs" />
-    <Compile Include="Parsing\SByteTokenParser.cs" />
-    <Compile Include="Parsing\UInt64TokenParser.cs" />
-    <Compile Include="Parsing\UInt32TokenParser.cs" />
-    <Compile Include="Parsing\ByteTokenParser.cs" />
-    <Compile Include="Parsing\Int16TokenParser.cs" />
-    <Compile Include="Parsing\Int64TokenParser.cs" />
-    <Compile Include="Parsing\Int32TokenParser.cs" />
-    <Compile Include="Parsing\StringTokenParser.cs" />
-    <Compile Include="Parsing\TokenParser.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reader.cs" />
-    <Compile Include="Tokenization\Tokenizer.cs" />
-    <Compile Include="Tokenization\TokenizerOptions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleReader\ConsoleReader.csproj">
+      <Project>{32c3343c-4b34-417a-b8c2-e4e1c348e7f1}</Project>
+      <Name>ConsoleReader</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
