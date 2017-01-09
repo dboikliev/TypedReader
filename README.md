@@ -1,5 +1,5 @@
 # ConsoleReader
-A simple library providing seamless interface for reading different types of inputs from the console.
+A small library providing seamless interface for reading different types of inputs from the console.
 
 ##Examples
 
