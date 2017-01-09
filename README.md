@@ -26,8 +26,12 @@ namespace ConsoleReader.TestClient
 ```
 
 ###Console Input:
+
+```
     123    456789   SomeText
-
+```
 ###Console Output:
-a: 123, b: 456789, text: SomeText
 
+```
+a: 123, b: 456789, text: SomeText
+```
