@@ -37,7 +37,7 @@ namespace ConsoleReader.TestClient
 a: 123, b: 456789, text: SomeText
 ```
 
-###2. Registering custom parser:
+###2. Registering a custom parser:
 
 ```csharp
 using ConsoleReader.Parsing;
