@@ -25,13 +25,13 @@ namespace ConsoleReader.TestClient
 }
 ```
 
-####Console Input:
+####Console input:
 
 ```
     123    456789   SomeText
 ```
 
-####Console Output:
+####Console output:
 
 ```
 a: 123, b: 456789, text: SomeText
@@ -60,9 +60,9 @@ namespace ConsoleReader.TestClient
         }
     }
 
-    class FileInfoTokenParser : TokenParser<FileInfo>
+    class FileInfoTokenParser : ITokenParser<FileInfo>
     {
-        public override FileInfo Parse(string token)
+        public FileInfo Parse(string token)
         {
             return new FileInfo(token);
         }
@@ -71,13 +71,13 @@ namespace ConsoleReader.TestClient
 
 ```
 
-####Console Input:
+####Console input:
 
 ```
 C:\some text.txt|||D:\bla bla bla.txt
 ```
 
-####Console Output:
+####Console output:
 
 ```
 file1: C:\some text.txt, file2: D:\bla bla bla.txt
