@@ -1,7 +1,7 @@
 ﻿namespace ConsoleReader.Parsing
 {
-    public abstract class TokenParser<T>
+    public interface TokenParser<T>
     {
-        public abstract T Parse(string token);
+        T Parse(string token);
     }
 }

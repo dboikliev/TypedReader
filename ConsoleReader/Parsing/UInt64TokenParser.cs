@@ -2,7 +2,7 @@
 {
     sealed class UInt64TokenParser : TokenParser<ulong>
     {
-        public override ulong Parse(string token)
+        public ulong Parse(string token)
         {
             return ulong.Parse(token);
         }
