@@ -1,6 +1,6 @@
 ﻿namespace ConsoleReader.Parsing
 {
-    sealed class ByteTokenParser : TokenParser<byte>
+    sealed class ByteTokenParser : ITokenParser<byte>
     {
         public byte Parse(string token)
         {

@@ -1,6 +1,6 @@
 ﻿namespace ConsoleReader.Parsing
 {
-    sealed class UInt16TokenParser : TokenParser<ushort>
+    sealed class UInt16TokenParser : ITokenParser<ushort>
     {
         public ushort Parse(string token)
         {

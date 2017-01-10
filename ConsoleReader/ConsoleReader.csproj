@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parsing\Int16TokenParser - Copy.cs" />
+    <Compile Include="Parsing\UInt16TokenParser.cs" />
     <Compile Include="Parsing\SByteTokenParser.cs" />
     <Compile Include="Parsing\UInt64TokenParser.cs" />
     <Compile Include="Parsing\UInt32TokenParser.cs" />
@@ -49,7 +49,7 @@
     <Compile Include="Parsing\Int64TokenParser.cs" />
     <Compile Include="Parsing\Int32TokenParser.cs" />
     <Compile Include="Parsing\StringTokenParser.cs" />
-    <Compile Include="Parsing\TokenParser.cs" />
+    <Compile Include="Parsing\ITokenParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reader.cs" />
     <Compile Include="Tokenization\Tokenizer.cs" />

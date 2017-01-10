@@ -11,7 +11,7 @@ namespace ConsoleReader
         private static Dictionary<Type, object> Parsers { get; } =
             new Dictionary<Type, object>();
 
-        public static void RegisterParser<TType>(TokenParser<TType> parser)
+        public static void RegisterParser<TType>(ITokenParser<TType> parser)
         {
             Parsers[typeof(TType)] = parser;
         }
@@ -36,7 +36,7 @@ namespace ConsoleReader
         public static T Next<T>()
         {
             var token = Tokenizer.Next();
-            var parsed = ((TokenParser<T>)Parsers[typeof(T)]).Parse(token);
+            var parsed = ((ITokenParser<T>)Parsers[typeof(T)]).Parse(token);
             return parsed;
         }
     }

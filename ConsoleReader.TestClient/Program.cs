@@ -16,7 +16,7 @@ namespace ConsoleReader.TestClient
         }
     }
 
-    class FileInfoTokenParser : TokenParser<FileInfo>
+    class FileInfoTokenParser : ITokenParser<FileInfo>
     {
         public FileInfo Parse(string token)
         {

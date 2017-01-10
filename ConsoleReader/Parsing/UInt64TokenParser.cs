@@ -1,6 +1,6 @@
 ﻿namespace ConsoleReader.Parsing
 {
-    sealed class UInt64TokenParser : TokenParser<ulong>
+    sealed class UInt64TokenParser : ITokenParser<ulong>
     {
         public ulong Parse(string token)
         {

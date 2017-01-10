@@ -1,6 +1,6 @@
 ﻿namespace ConsoleReader.Parsing
 {
-    public interface TokenParser<T>
+    public interface ITokenParser<T>
     {
         T Parse(string token);
     }

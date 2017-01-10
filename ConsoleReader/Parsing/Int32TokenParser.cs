@@ -1,6 +1,6 @@
 ﻿namespace ConsoleReader.Parsing
 {
-    sealed class Int32TokenParser : TokenParser<int>
+    sealed class Int32TokenParser : ITokenParser<int>
     {
         public int Parse(string token)
         {

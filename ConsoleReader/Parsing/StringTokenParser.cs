@@ -2,7 +2,7 @@
 
 namespace ConsoleReader.Parsing
 {
-    sealed class StringTokenParser : TokenParser<String>
+    sealed class StringTokenParser : ITokenParser<String>
     {
         public string Parse(string token)
         {
