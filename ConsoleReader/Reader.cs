@@ -31,7 +31,7 @@ namespace ConsoleReader
         }
 
         /// <summary>
-        /// Register a parser for a type into the Reader <typeparamref name="T"/>.
+        /// Registers a parser for a type into the Reader <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type being parsed</typeparam>
         /// <param name="parser">An instance of ITokenParser wich can parse <typeparamref name="T"/>.</param>
