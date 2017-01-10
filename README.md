@@ -60,9 +60,9 @@ namespace ConsoleReader.TestClient
         }
     }
 
-    class FileInfoTokenParser : TokenParser<FileInfo>
+    class FileInfoTokenParser : ITokenParser<FileInfo>
     {
-        public override FileInfo Parse(string token)
+        public FileInfo Parse(string token)
         {
             return new FileInfo(token);
         }
