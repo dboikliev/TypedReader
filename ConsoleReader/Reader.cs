@@ -8,13 +8,13 @@ namespace ConsoleReader
 
     public static class Reader
     {
+        /// <summary>
+        /// Options for the tokenizer.
+        /// </summary>
+        public static TokenizerOptions TokenizerOptions => Tokenizer.Options;
         private static Dictionary<Type, object> Parsers { get; } =
             new Dictionary<Type, object>();
-
-        public static void RegisterParser<TType>(ITokenParser<TType> parser)
-        {
-            Parsers[typeof(TType)] = parser;
-        }
+        private static Tokenizer Tokenizer { get; } = new Tokenizer();
 
         static Reader()
         {
@@ -30,9 +30,21 @@ namespace ConsoleReader
 
         }
 
-        private static Tokenizer Tokenizer { get; } = new Tokenizer();
-        public static TokenizerOptions TokenizerOptions => Tokenizer.Options;
+        /// <summary>
+        /// Register a parser for a type into the Reader <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type being parsed</typeparam>
+        /// <param name="parser">An instance of ITokenParser wich can parse <typeparamref name="T"/>.</param>
+        public static void RegisterParser<T>(ITokenParser<T> parser)
+        {
+            Parsers[typeof(T)] = parser;
+        }
 
+        /// <summary>
+        /// Parses the next token into the specified type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>Returns the token parsed as an instnace of the speicifed type <typeparamref name="T"/>.</returns>
         public static T Next<T>()
         {
             var token = Tokenizer.Next();
