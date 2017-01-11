@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleReader", "ConsoleRea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleReader.TestClient", "ConsoleReader.TestClient\ConsoleReader.TestClient.csproj", "{848E4A01-5250-4046-8F13-B0435361322A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleReader.Tests", "ConsoleReader.Tests\ConsoleReader.Tests.csproj", "{D54984E2-9A9A-45DB-BDE5-D1B036A8ADCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{848E4A01-5250-4046-8F13-B0435361322A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{848E4A01-5250-4046-8F13-B0435361322A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{848E4A01-5250-4046-8F13-B0435361322A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D54984E2-9A9A-45DB-BDE5-D1B036A8ADCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D54984E2-9A9A-45DB-BDE5-D1B036A8ADCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D54984E2-9A9A-45DB-BDE5-D1B036A8ADCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D54984E2-9A9A-45DB-BDE5-D1B036A8ADCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

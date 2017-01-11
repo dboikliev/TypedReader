@@ -14,7 +14,6 @@ namespace ConsoleReader
         public static TokenizerOptions TokenizerOptions => Tokenizer.Options;
         private static Dictionary<Type, object> Parsers { get; } =
             new Dictionary<Type, object>();
-        private static Tokenizer Tokenizer { get; } = new Tokenizer();
 
         static Reader()
         {

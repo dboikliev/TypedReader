@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 namespace ConsoleReader.Tokenization
 {
-    class Tokenizer
+    static class Tokenizer
     {
-        public TokenizerOptions Options { get; } = new TokenizerOptions();
+        public static TokenizerOptions Options { get; } = new TokenizerOptions();
 
-        public string Next()
+        public static string Next()
         {
             var builder = new StringBuilder();
             var isTokenizing = true;
@@ -21,13 +22,20 @@ namespace ConsoleReader.Tokenization
                 }
                 else
                 {
-                    while (Environment.NewLine.Length > 1 &&
+                    var characterCategory = char.GetUnicodeCategory(character);
+                    while (characterCategory != UnicodeCategory.OtherNotAssigned &&
+                        Environment.NewLine.Length > 1 &&
                         Environment.NewLine.StartsWith(character.ToString()))
                     {
                         character = (char)Console.Read();
-                        isTokenizing = false;
+                        if (hasReachedToken)
+                        {
+                            isTokenizing = false;
+                        }
                     }
 
+
+                    isTokenizing &= characterCategory != UnicodeCategory.OtherNotAssigned;
                     if (character == Options.Separator)
                     {
                         if (hasReachedToken)
@@ -41,6 +49,7 @@ namespace ConsoleReader.Tokenization
                         builder.Append(character);
                     }
                 }
+
             }
 
             var token = builder.ToString();
