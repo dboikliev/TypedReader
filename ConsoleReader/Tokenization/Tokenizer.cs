@@ -43,7 +43,7 @@ namespace ConsoleReader.Tokenization
                             isTokenizing = false;
                         }
                     }
-                    else if (isTokenizing)
+                    else if (isTokenizing && !Environment.NewLine.Contains(character.ToString()))
                     {
                         hasReachedToken = true;
                         builder.Append(character);

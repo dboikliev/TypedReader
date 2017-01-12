@@ -7,7 +7,7 @@ namespace ConsoleReader.Tests
     [TestClass]
     public class ReaderTests
     {
-        [TestMethod]
+        [TestMethod, Timeout(80)]
         public void Reader_ShouldRead_Int()
         {
             var reader = new StringReader("  123   456   ");
@@ -20,7 +20,7 @@ namespace ConsoleReader.Tests
             Assert.AreEqual(456, second);
         }
 
-        [TestMethod]
+        [TestMethod, Timeout(80)]
         public void Reader_ShouldRead_String()
         {
             var reader = new StringReader("  abc   def   ");
@@ -33,7 +33,7 @@ namespace ConsoleReader.Tests
             Assert.AreEqual("def", second);
         }
 
-        [TestMethod]
+        [TestMethod, Timeout(80)]
         public void Reader_ShouldRead_MixedTypes()
         {
             var reader = new StringReader("  abc   123   ");

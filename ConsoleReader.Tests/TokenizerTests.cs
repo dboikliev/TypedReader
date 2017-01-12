@@ -38,9 +38,29 @@ namespace ConsoleReader.Tests
         }
 
         [TestMethod]
-        public void Tokenizer_ShouldIgnore_NewLineCharacter()
+        public void Tokenizer_ShouldIgnore_NewLineSymbols()
         {
-            var reader = new StringReader("|||test1 test2|||" + Environment.NewLine +"||test3 test4||");
+            var reader = new StringReader("|||test1 test2|||" + Environment.NewLine + "||test3 test4");
+            Console.SetIn(reader);
+            Tokenizer.Options.Separator = '|';
+
+            var token1 = Tokenizer.Next();
+            var token2 = Tokenizer.Next();
+
+            Assert.AreEqual("test1 test2", token1);
+            Assert.AreEqual("test3 test4", token2);
+        }
+
+        [TestMethod]
+        public void Tokenizer_ShouldIgnore_MultipleNewLineSymbols()
+        {
+            var reader = new StringReader("|||test1 test2|||" +
+                                           Environment.NewLine +
+                                           Environment.NewLine +
+                                          "||test3 test4" +
+                                           Environment.NewLine +
+                                           Environment.NewLine +
+                                          "  || || ");
             Console.SetIn(reader);
             Tokenizer.Options.Separator = '|';
 
