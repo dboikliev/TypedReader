@@ -74,7 +74,7 @@ namespace ConsoleReader.TestClient
 ####Console input:
 
 ```
-C:\some text.txt|||D:\bla bla bla.txt
+C:\some text.txt|D:\bla bla bla.txt
 ```
 
 ####Console output:
