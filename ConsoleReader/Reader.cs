@@ -8,24 +8,25 @@ namespace ConsoleReader
 
     public static class Reader
     {
+        private static Tokenizer _tokenizer = new Tokenizer();
+        private static Dictionary<Type, object> _parsers = new Dictionary<Type, object>();
+
         /// <summary>
         /// Options for the tokenizer.
         /// </summary>
-        public static TokenizerOptions TokenizerOptions => Tokenizer.Options;
-        private static Dictionary<Type, object> Parsers { get; } =
-            new Dictionary<Type, object>();
+        public static TokenizerOptions TokenizerOptions => _tokenizer.Options;
 
         static Reader()
         {
-            Parsers[typeof(string)] = new StringTokenParser();
-            Parsers[typeof(byte)] = new ByteTokenParser();
-            Parsers[typeof(sbyte)] = new SByteTokenParser();
-            Parsers[typeof(short)] = new Int16TokenParser();
-            Parsers[typeof(ushort)] = new UInt16TokenParser();
-            Parsers[typeof(int)] = new Int32TokenParser();
-            Parsers[typeof(uint)] = new UInt32TokenParser();
-            Parsers[typeof(long)] = new Int64TokenParser();
-            Parsers[typeof(ulong)] = new UInt64TokenParser();
+            _parsers[typeof(string)] = new StringTokenParser();
+            _parsers[typeof(byte)] = new ByteTokenParser();
+            _parsers[typeof(sbyte)] = new SByteTokenParser();
+            _parsers[typeof(short)] = new Int16TokenParser();
+            _parsers[typeof(ushort)] = new UInt16TokenParser();
+            _parsers[typeof(int)] = new Int32TokenParser();
+            _parsers[typeof(uint)] = new UInt32TokenParser();
+            _parsers[typeof(long)] = new Int64TokenParser();
+            _parsers[typeof(ulong)] = new UInt64TokenParser();
 
         }
 
@@ -36,7 +37,7 @@ namespace ConsoleReader
         /// <param name="parser">An instance of ITokenParser wich can parse <typeparamref name="T"/>.</param>
         public static void RegisterParser<T>(ITokenParser<T> parser)
         {
-            Parsers[typeof(T)] = parser;
+            _parsers[typeof(T)] = parser;
         }
 
         /// <summary>
@@ -46,8 +47,8 @@ namespace ConsoleReader
         /// <returns>Returns the token parsed as an instnace of the speicifed type <typeparamref name="T"/>.</returns>
         public static T Next<T>()
         {
-            var token = Tokenizer.Next();
-            var parsed = ((ITokenParser<T>)Parsers[typeof(T)]).Parse(token);
+            var token = _tokenizer.Next();
+            var parsed = ((ITokenParser<T>)_parsers[typeof(T)]).Parse(token);
             return parsed;
         }
     }

@@ -13,10 +13,11 @@ namespace ConsoleReader.Tests
         {
             var reader = new StringReader("  test1   test2   ");
             Console.SetIn(reader);
-            Tokenizer.Options.Separator = ' ';
+            var tokenizer = new Tokenizer();
+            tokenizer.Options.Separator = ' ';
 
-            var token1 = Tokenizer.Next();
-            var token2 = Tokenizer.Next();
+            var token1 = tokenizer.Next();
+            var token2 = tokenizer.Next();
 
             Assert.AreEqual("test1", token1);
             Assert.AreEqual("test2", token2);
@@ -28,10 +29,11 @@ namespace ConsoleReader.Tests
         {
             var reader = new StringReader("|||test1 test2|||test3 test4||");
             Console.SetIn(reader);
-            Tokenizer.Options.Separator = '|';
+            var tokenizer = new Tokenizer();
+            tokenizer.Options.Separator = '|';
 
-            var token1 = Tokenizer.Next();
-            var token2 = Tokenizer.Next();
+            var token1 = tokenizer.Next();
+            var token2 = tokenizer.Next();
 
             Assert.AreEqual("test1 test2", token1);
             Assert.AreEqual("test3 test4", token2);
@@ -42,10 +44,11 @@ namespace ConsoleReader.Tests
         {
             var reader = new StringReader("|||test1 test2|||" + Environment.NewLine + "||test3 test4");
             Console.SetIn(reader);
-            Tokenizer.Options.Separator = '|';
+            var tokenizer = new Tokenizer();
+            tokenizer.Options.Separator = '|';
 
-            var token1 = Tokenizer.Next();
-            var token2 = Tokenizer.Next();
+            var token1 = tokenizer.Next();
+            var token2 = tokenizer.Next();
 
             Assert.AreEqual("test1 test2", token1);
             Assert.AreEqual("test3 test4", token2);
@@ -62,10 +65,11 @@ namespace ConsoleReader.Tests
                                            Environment.NewLine +
                                           "  || || ");
             Console.SetIn(reader);
-            Tokenizer.Options.Separator = '|';
+            var tokenizer = new Tokenizer();
+            tokenizer.Options.Separator = '|';
 
-            var token1 = Tokenizer.Next();
-            var token2 = Tokenizer.Next();
+            var token1 = tokenizer.Next();
+            var token2 = tokenizer.Next();
 
             Assert.AreEqual("test1 test2", token1);
             Assert.AreEqual("test3 test4", token2);

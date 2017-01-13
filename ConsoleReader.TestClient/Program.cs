@@ -1,15 +1,26 @@
-﻿namespace ConsoleReader.TestClient
+﻿using ConsoleReader.Parsing;
+using System;
+using System.IO;
+
+namespace ConsoleReader.TestClient
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Reader.RegisterParser(new FileInfoTokenParser());
             Reader.TokenizerOptions.Separator = '|';
-            var file1 = Reader.Next<string>();
-            var file2 = Reader.Next<string>();
-            System.Console.WriteLine($"file1: { file1 }, file2: { file2 }");
-
+            var file = Reader.Next<FileInfo>();
+            var text = Reader.Next<string>();
+            Console.WriteLine($"file: { file }, string: { text }");
         }
     }
 
+    class FileInfoTokenParser : ITokenParser<FileInfo>
+    {
+        public FileInfo Parse(string token)
+        {
+            return new FileInfo(token);
+        }
+    }
 }
