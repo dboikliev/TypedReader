@@ -1,6 +1,4 @@
-﻿using ConsoleReader.Parsing;
-using System;
-using System.IO;
+﻿using System;
 
 namespace ConsoleReader.TestClient
 {
@@ -8,19 +6,8 @@ namespace ConsoleReader.TestClient
     {
         static void Main(string[] args)
         {
-            Reader.RegisterParser(new FileInfoTokenParser());
-            Reader.TokenizerOptions.Separator = '|';
-            var file = Reader.Next<FileInfo>();
-            var text = Reader.Next<string>();
-            Console.WriteLine($"file: { file }, string: { text }");
-        }
-    }
-
-    class FileInfoTokenParser : ITokenParser<FileInfo>
-    {
-        public FileInfo Parse(string token)
-        {
-            return new FileInfo(token);
+            var number = Reader.Next<decimal>();
+            Console.WriteLine(number);
         }
     }
 }

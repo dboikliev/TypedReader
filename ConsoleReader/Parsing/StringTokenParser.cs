@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace ConsoleReader.Parsing
+﻿namespace ConsoleReader.Parsing
 {
-    sealed class StringTokenParser : ITokenParser<String>
+    sealed class StringTokenParser : ITokenParser<string>
     {
         public string Parse(string token)
         {

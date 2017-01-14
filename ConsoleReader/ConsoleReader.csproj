@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parsing\DecimalTokenParser.cs" />
+    <Compile Include="Parsing\DoubleTokenParser.cs" />
+    <Compile Include="Parsing\FloatTokenParser.cs" />
     <Compile Include="Parsing\UInt16TokenParser.cs" />
     <Compile Include="Parsing\SByteTokenParser.cs" />
     <Compile Include="Parsing\UInt64TokenParser.cs" />

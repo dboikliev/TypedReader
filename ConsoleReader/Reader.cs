@@ -19,15 +19,17 @@ namespace ConsoleReader
         static Reader()
         {
             _parsers[typeof(string)] = new StringTokenParser();
-            _parsers[typeof(byte)] = new ByteTokenParser();
             _parsers[typeof(sbyte)] = new SByteTokenParser();
+            _parsers[typeof(byte)] = new ByteTokenParser();
             _parsers[typeof(short)] = new Int16TokenParser();
             _parsers[typeof(ushort)] = new UInt16TokenParser();
             _parsers[typeof(int)] = new Int32TokenParser();
             _parsers[typeof(uint)] = new UInt32TokenParser();
             _parsers[typeof(long)] = new Int64TokenParser();
             _parsers[typeof(ulong)] = new UInt64TokenParser();
-
+            _parsers[typeof(float)] = new FloatTokenParser();
+            _parsers[typeof(double)] = new DoubleTokenParser();
+            _parsers[typeof(decimal)] = new DecimalTokenParser();
         }
 
         /// <summary>
