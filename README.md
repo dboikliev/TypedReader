@@ -1,7 +1,7 @@
 # ConsoleReader
 A small library providing a streamlined interface for reading different types of inputs from the console.
 Similar in functionality to C++'s std::cin and Java.util.Scanner.nextInt(), Java.util.Scanner.nextFloat(), etc.
-###Examples
+##Examples
 
 ###1. Reading from console:
 
