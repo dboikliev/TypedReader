@@ -8,8 +8,8 @@ namespace ConsoleReader
 
     public static class Reader
     {
-        private static Tokenizer _tokenizer = new Tokenizer();
-        private static Dictionary<Type, object> _parsers = new Dictionary<Type, object>();
+        private static readonly Tokenizer _tokenizer = new Tokenizer();
+        private static readonly Dictionary<Type, object> _parsers = new Dictionary<Type, object>();
 
         /// <summary>
         /// Options for the tokenizer.
