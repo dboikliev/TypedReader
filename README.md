@@ -8,19 +8,17 @@ Similar in functionality to C++'s std::cin and Java.util.Scanner.nextInt(), Java
 ####Code:
 
 ```csharp
+using System;
 using static ConsoleReader.Reader;
 
-namespace ConsoleReader.TestClient
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var a = Next<byte>();
-            var b = Next<int>();
-            var text = Next<string>();
-            System.Console.WriteLine($"a: { a }, b: { b }, text: { text }");
-        }
+        var a = Next<byte>();
+        var b = Next<int>();
+        var text = Next<string>();
+        Console.WriteLine($"a: { a }, b: { b }, text: { text }");
     }
 }
 ```
@@ -45,27 +43,24 @@ a: 123, b: 456789, text: SomeText
 using ConsoleReader.Parsing;
 using System.IO;
 
-namespace ConsoleReader.TestClient
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Reader.TokenizerOptions.Separator = '|';
-            Reader.RegisterParser(new FileInfoTokenParser());
+        Reader.TokenizerOptions.Separator = '|';
+        Reader.RegisterParser(new FileInfoTokenParser());
 
-            var file1 = Reader.Next<FileInfo>();
-            var file2 = Reader.Next<FileInfo>();
-            System.Console.WriteLine($"file1: { file1 }, file2: { file2 }");
-        }
+        var file1 = Reader.Next<FileInfo>();
+        var file2 = Reader.Next<FileInfo>();
+        System.Console.WriteLine($"file1: { file1 }, file2: { file2 }");
     }
+}
 
-    class FileInfoTokenParser : ITokenParser<FileInfo>
+class FileInfoTokenParser : ITokenParser<FileInfo>
+{
+    public FileInfo Parse(string token)
     {
-        public FileInfo Parse(string token)
-        {
-            return new FileInfo(token);
-        }
+        return new FileInfo(token);
     }
 }
 
