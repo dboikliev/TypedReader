@@ -77,4 +77,3 @@ C:\some text.txt|D:\bla bla bla.txt
 ```
 file1: C:\some text.txt, file2: D:\bla bla bla.txt
 ```
-
