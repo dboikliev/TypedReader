@@ -24,21 +24,21 @@ class Program
 }
 ```
 
-####Console input:
+#### Console input:
 
 ```
     123    456789   SomeText
 ```
 
-####Console output:
+#### Console output:
 
 ```
 a: 123, b: 456789, text: SomeText
 ```
 
-###2. Registering a custom parser:
+### 2. Registering a custom parser:
 
-####Code:
+#### Code:
 
 ```csharp
 using ConsoleReader.Parsing;
@@ -67,13 +67,13 @@ class FileInfoTokenParser : ITokenParser<FileInfo>
 
 ```
 
-####Console input:
+#### Console input:
 
 ```
 C:\some text.txt|D:\bla bla bla.txt
 ```
 
-####Console output:
+#### Console output:
 
 ```
 file1: C:\some text.txt, file2: D:\bla bla bla.txt
