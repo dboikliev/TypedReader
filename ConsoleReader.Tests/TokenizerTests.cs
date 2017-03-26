@@ -51,7 +51,7 @@ namespace ConsoleReader.Tests
             Assert.AreEqual("test3 test4", token2);
         }
 
-        [TestMethod]
+        [TestMethod, Timeout(80)]
         public void Tokenizer_ShouldIgnore_MultipleNewLineSymbols()
         {
             var reader = new StringReader("|||test1 test2|||" +
