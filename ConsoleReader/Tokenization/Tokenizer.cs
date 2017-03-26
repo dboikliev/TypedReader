@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Text;
 
 namespace ConsoleReader.Tokenization
@@ -8,14 +9,14 @@ namespace ConsoleReader.Tokenization
     {
         public TokenizerOptions Options { get; } = new TokenizerOptions();
 
-        public string Next()
+        public string Next(TextReader reader)
         {
             var builder = new StringBuilder();
             var isTokenizing = true;
             var hasReachedToken = false;
             while (isTokenizing)
             {
-                var character = (char)Console.Read();
+                var character = (char)reader.Read();
                 if (character < 0)
                 {
                     isTokenizing = false;
@@ -27,7 +28,7 @@ namespace ConsoleReader.Tokenization
                         Environment.NewLine.Length > 1 &&
                         Environment.NewLine.StartsWith(character.ToString()))
                     {
-                        character = (char)Console.Read();
+                        character = (char)reader.Read();
                         if (hasReachedToken)
                         {
                             isTokenizing = false;

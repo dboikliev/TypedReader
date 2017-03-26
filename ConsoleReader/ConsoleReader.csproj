@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleReader.cs" />
     <Compile Include="Parsing\DecimalTokenParser.cs" />
     <Compile Include="Parsing\DoubleTokenParser.cs" />
     <Compile Include="Parsing\FloatTokenParser.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Parsing\ITokenParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reader.cs" />
+    <Compile Include="TextReaderExtensions.cs" />
     <Compile Include="Tokenization\Tokenizer.cs" />
     <Compile Include="Tokenization\TokenizerOptions.cs" />
   </ItemGroup>

@@ -6,7 +6,7 @@ namespace ConsoleReader.TestClient
     {
         static void Main(string[] args)
         {
-            var number = Reader.Next<decimal>();
+            var number = ConsoleReader.Next<decimal>();
             Console.WriteLine(number);
         }
     }

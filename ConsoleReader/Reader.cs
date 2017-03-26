@@ -2,19 +2,20 @@
 using ConsoleReader.Tokenization;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace ConsoleReader
 {
 
-    public static class Reader
+    internal class Reader
     {
-        private static readonly Tokenizer _tokenizer = new Tokenizer();
+        private readonly Tokenizer _tokenizer = new Tokenizer();
         private static readonly Dictionary<Type, object> _parsers = new Dictionary<Type, object>();
 
         /// <summary>
         /// Options for the tokenizer.
         /// </summary>
-        public static TokenizerOptions TokenizerOptions => _tokenizer.Options;
+        public TokenizerOptions TokenizerOptions => _tokenizer.Options;
 
         static Reader()
         {
@@ -37,7 +38,7 @@ namespace ConsoleReader
         /// </summary>
         /// <typeparam name="T">The type being parsed</typeparam>
         /// <param name="parser">An instance of ITokenParser wich can parse <typeparamref name="T"/>.</param>
-        public static void RegisterParser<T>(ITokenParser<T> parser)
+        internal static void RegisterParser<T>(ITokenParser<T> parser)
         {
             _parsers[typeof(T)] = parser;
         }
@@ -47,9 +48,9 @@ namespace ConsoleReader
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns>Returns the token parsed as an instnace of the speicifed type <typeparamref name="T"/>.</returns>
-        public static T Next<T>()
+        internal T Next<T>(TextReader reader)
         {
-            var token = _tokenizer.Next();
+            var token = _tokenizer.Next(reader);
             var parsed = ((ITokenParser<T>)_parsers[typeof(T)]).Parse(token);
             return parsed;
         }

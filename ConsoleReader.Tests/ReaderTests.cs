@@ -1,8 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ConsoleReader;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 
-namespace ConsoleReader.Tests
+namespace ConsoleConsoleReader.Tests
 {
     [TestClass]
     public class ReaderTests
@@ -12,35 +13,35 @@ namespace ConsoleReader.Tests
         {
             var reader = new StringReader("  123   456   ");
             Console.SetIn(reader);
-
-            int first = Reader.Next<int>();
-            int second = Reader.Next<int>();
+            
+            int first = ConsoleReader.ConsoleReader.Next<int>();
+            int second = ConsoleReader.ConsoleReader.Next<int>();
 
             Assert.AreEqual(123, first);
             Assert.AreEqual(456, second);
         }
 
-        [TestMethod, Timeout(80)]
+        [TestMethod]
         public void Reader_ShouldRead_String()
         {
             var reader = new StringReader("  abc   def   ");
             Console.SetIn(reader);
 
-            string first = Reader.Next<string>();
-            string second = Reader.Next<string>();
+            string first = ConsoleReader.ConsoleReader.Next<string>();
+            string second = ConsoleReader.ConsoleReader.Next<string>();
 
             Assert.AreEqual("abc", first);
             Assert.AreEqual("def", second);
         }
 
-        [TestMethod, Timeout(80)]
+        [TestMethod]
         public void Reader_ShouldRead_MixedTypes()
         {
             var reader = new StringReader("  abc   123   ");
             Console.SetIn(reader);
 
-            string first = Reader.Next<string>();
-            int second = Reader.Next<int>();
+            string first = ConsoleReader.ConsoleReader.Next<string>();
+            int second = ConsoleReader.ConsoleReader.Next<int>();
 
             Assert.AreEqual("abc", first);
             Assert.AreEqual(123, second);
