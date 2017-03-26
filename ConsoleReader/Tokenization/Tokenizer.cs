@@ -7,7 +7,7 @@ namespace ConsoleReader.Tokenization
 {
     class Tokenizer
     {
-        public TokenizerOptions Options { get; } = new TokenizerOptions();
+        public TokenizerOptions Options { get; set; } = new TokenizerOptions();
 
         public string Next(TextReader reader)
         {

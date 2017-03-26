@@ -1,12 +1,17 @@
-﻿using System.IO;
+﻿using ConsoleReader.Tokenization;
+using System.IO;
 
 namespace ConsoleReader
 {
-    static class TextReaderExtensions
+    public static class TextReaderExtensions
     {
-        public static T Next<T>(this TextReader reader)
+        public static T Next<T>(this TextReader reader, TokenizerOptions options = null)
         {
             var typedReader = new Reader();
+            if (options != null)
+            {
+                typedReader.TokenizerOptions = options;
+            }
             return typedReader.Next<T>(reader);
         }
     }

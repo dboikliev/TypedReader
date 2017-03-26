@@ -15,7 +15,14 @@ namespace ConsoleReader
         /// <summary>
         /// Options for the tokenizer.
         /// </summary>
-        public TokenizerOptions TokenizerOptions => _tokenizer.Options;
+        public TokenizerOptions TokenizerOptions
+        {
+            get => _tokenizer.Options;
+            set
+            {
+                _tokenizer.Options = value ?? throw new ArgumentNullException($"{ nameof(TokenizerOptions) } can not be null.");
+            }
+        }
 
         static Reader()
         {
