@@ -49,7 +49,7 @@ class Program
     {
         Reader.RegisterParser(new FileInfoTokenParser());
 
-        var file1 = Reader.Next<FileInfo>(Console.In, '|');
+        var file1 = Reader.Next<FileInfo>(Console.In, new TokenizerOptions { Separator = '|' });
         var file2 = Console.In.Next<FileInfo>('|');
         System.Console.WriteLine($"file1: { file1 }, file2: { file2 }");
     }
