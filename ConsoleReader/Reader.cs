@@ -6,8 +6,7 @@ using System.IO;
 
 namespace ConsoleReader
 {
-
-    internal static class Reader
+    public static class Reader
     {
         private static readonly Tokenizer _tokenizer = new Tokenizer();
         private static readonly Dictionary<Type, object> _parsers = new Dictionary<Type, object>();
@@ -33,7 +32,7 @@ namespace ConsoleReader
         /// </summary>
         /// <typeparam name="T">The type being parsed</typeparam>
         /// <param name="parser">An instance of ITokenParser wich can parse <typeparamref name="T"/>.</param>
-        internal static void RegisterParser<T>(ITokenParser<T> parser)
+        public static void RegisterParser<T>(ITokenParser<T> parser)
         {
             _parsers[typeof(T)] = parser;
         }
@@ -43,7 +42,7 @@ namespace ConsoleReader
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns>Returns the token parsed as an instnace of the speicifed type <typeparamref name="T"/>.</returns>
-        internal static T Next<T>(TextReader reader, TokenizerOptions options)
+        public static T Next<T>(TextReader reader, TokenizerOptions options)
         {
             var token = _tokenizer.Next(reader, options);
             var parsed = ((ITokenParser<T>)_parsers[typeof(T)]).Parse(token);
