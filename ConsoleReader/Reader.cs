@@ -7,22 +7,10 @@ using System.IO;
 namespace ConsoleReader
 {
 
-    internal class Reader
+    internal static class Reader
     {
-        private readonly Tokenizer _tokenizer = new Tokenizer();
+        private static readonly Tokenizer _tokenizer = new Tokenizer();
         private static readonly Dictionary<Type, object> _parsers = new Dictionary<Type, object>();
-
-        /// <summary>
-        /// Options for the tokenizer.
-        /// </summary>
-        public TokenizerOptions TokenizerOptions
-        {
-            get => _tokenizer.Options;
-            set
-            {
-                _tokenizer.Options = value ?? throw new ArgumentNullException($"{ nameof(TokenizerOptions) } can not be null.");
-            }
-        }
 
         static Reader()
         {
@@ -55,9 +43,9 @@ namespace ConsoleReader
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns>Returns the token parsed as an instnace of the speicifed type <typeparamref name="T"/>.</returns>
-        internal T Next<T>(TextReader reader)
+        internal static T Next<T>(TextReader reader, TokenizerOptions options)
         {
-            var token = _tokenizer.Next(reader);
+            var token = _tokenizer.Next(reader, options);
             var parsed = ((ITokenParser<T>)_parsers[typeof(T)]).Parse(token);
             return parsed;
         }

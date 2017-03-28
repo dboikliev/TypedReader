@@ -5,14 +5,14 @@ namespace ConsoleReader
 {
     public static class TextReaderExtensions
     {
-        public static T Next<T>(this TextReader reader, TokenizerOptions options = null)
+        public static T Next<T>(this TextReader reader, char separator = ' ', bool ignoreWhiteSpace = true)
         {
-            var typedReader = new Reader();
-            if (options != null)
+            var options = new TokenizerOptions
             {
-                typedReader.TokenizerOptions = options;
-            }
-            return typedReader.Next<T>(reader);
+                Separator = separator,
+                IgnoreWhiteSpace = ignoreWhiteSpace
+            };
+            return Reader.Next<T>(reader, options);
         }
     }
 }

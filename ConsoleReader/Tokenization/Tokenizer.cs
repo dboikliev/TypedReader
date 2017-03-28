@@ -5,11 +5,9 @@ using System.Text;
 
 namespace ConsoleReader.Tokenization
 {
-    class Tokenizer
+    internal class Tokenizer
     {
-        public TokenizerOptions Options { get; set; } = new TokenizerOptions();
-
-        public string Next(TextReader reader)
+        public string Next(TextReader reader, TokenizerOptions options)
         {
             var builder = new StringBuilder();
             var isTokenizing = true;
@@ -37,7 +35,7 @@ namespace ConsoleReader.Tokenization
 
 
                     isTokenizing &= characterCategory != UnicodeCategory.OtherNotAssigned;
-                    if ((!Options.IgnoreWhiteSpace && char.IsWhiteSpace(character)) || character == Options.Separator)
+                    if ((!options.IgnoreWhiteSpace && char.IsWhiteSpace(character)) || character == options.Separator)
                     {
                         if (hasReachedToken)
                         {
