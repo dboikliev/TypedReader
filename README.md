@@ -40,8 +40,10 @@ a: 123, b: 456789, text: SomeText
 #### Code:
 
 ```csharp
-using ConsoleReader.Parsing;
+using System;
 using System.IO;
+using ConsoleReader.Parsing;
+using ConsoleReader.Tokenization;
 
 class Program
 {
@@ -49,6 +51,7 @@ class Program
     {
         Reader.RegisterParser(new FileInfoTokenParser());
 
+        //The following calls are interchangeable
         var file1 = Reader.Next<FileInfo>(Console.In, new TokenizerOptions { Separator = '|' });
         var file2 = Console.In.Next<FileInfo>('|');
         System.Console.WriteLine($"file1: { file1 }, file2: { file2 }");
