@@ -10,15 +10,14 @@ Similar in functionality to C++'s std::cin and Java.util.Scanner.nextInt(), Java
 
 ```csharp
 using System;
-using static ConsoleReader.Reader;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var a = Next<byte>();
-        var b = Next<int>();
-        var text = Next<string>();
+        var a = Console.In.Next<byte>();
+        var b = Console.In.Next<int>();
+        var text = Console.In.Next<string>();
         Console.WriteLine($"a: { a }, b: { b }, text: { text }");
     }
 }
@@ -51,8 +50,8 @@ class Program
         Reader.TokenizerOptions.Separator = '|';
         Reader.RegisterParser(new FileInfoTokenParser());
 
-        var file1 = Reader.Next<FileInfo>();
-        var file2 = Reader.Next<FileInfo>();
+        var file1 = Reader.Next<FileInfo>(Console.In);
+        var file2 = Console.In.Next<FileInfo>();
         System.Console.WriteLine($"file1: { file1 }, file2: { file2 }");
     }
 }
