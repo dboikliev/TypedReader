@@ -16,7 +16,7 @@ namespace ConsoleReader.Tests
 
             var options = new TokenizerOptions
             {
-                Separator = ' '
+                Separators = new[] { ' ' }
             };
 
             var token1 = tokenizer.Next(reader, options);
@@ -35,7 +35,7 @@ namespace ConsoleReader.Tests
 
             var options = new TokenizerOptions
             {
-                Separator = '|'
+                Separators = new[] { '|' }
             };
 
             var token1 = tokenizer.Next(reader, options);
@@ -53,7 +53,7 @@ namespace ConsoleReader.Tests
 
             var options = new TokenizerOptions
             {
-                Separator = '|'
+                Separators = new[] { '|' }
             };
 
             var token1 = tokenizer.Next(reader, options);
@@ -77,7 +77,7 @@ namespace ConsoleReader.Tests
 
             var options = new TokenizerOptions
             {
-                Separator = '|'
+                Separators = new[] { '|' }
             };
 
             var token1 = tokenizer.Next(reader, options);

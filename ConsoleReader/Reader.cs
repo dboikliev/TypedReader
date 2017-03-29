@@ -41,7 +41,7 @@ namespace ConsoleReader
         /// Parses the next token into the specified type <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The desired type of the next element.</typeparam>
-        /// <returns>Returns the token parsed as an instnace of the speicifed type <typeparamref name="T"/>.</returns>
+        /// <returns>Returns the token parsed as an instance of the specified type <typeparamref name="T"/>.</returns>
         public static T Next<T>(TextReader reader, TokenizerOptions options)
         {
             var token = _tokenizer.Next(reader, options);

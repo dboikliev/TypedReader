@@ -10,14 +10,32 @@ namespace ConsoleReader
         /// </summary>
         /// <typeparam name="T">The desired type of the next element.</typeparam>
         /// <param name="reader">The source.</param>
-        /// <param name="separator">A symbol which separates elements in the sequence.</param>
         /// <param name="ignoreWhiteSpace">A flag which indicates whether to ignore whitespace symbols.</param>
+        /// <param name="separators">Symbols which separate elements in the sequence.</param>
+        /// <returns></returns>
+        public static T Next<T>(this TextReader reader, bool ignoreWhiteSpace = true, params char[] separators)
+        {
+            var options = new TokenizerOptions
+            {
+                Separators = separators?.Length == 0 ? new [] { ' ' } : separators,
+                IgnoreWhiteSpace = ignoreWhiteSpace
+            };
+            return Reader.Next<T>(reader, options);
+        }
+
+        /// <summary>
+        /// Parses the next token into the specified type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The desired type of the next element.</typeparam>
+        /// <param name="reader">The source.</param>
+        /// <param name="ignoreWhiteSpace">A flag which indicates whether to ignore whitespace symbols.</param>
+        /// <param name="separator">A symbol which separates elements in the sequence.</param>
         /// <returns></returns>
         public static T Next<T>(this TextReader reader, char separator = ' ', bool ignoreWhiteSpace = true)
         {
             var options = new TokenizerOptions
             {
-                Separator = separator,
+                Separators = new[] { separator } ,
                 IgnoreWhiteSpace = ignoreWhiteSpace
             };
             return Reader.Next<T>(reader, options);

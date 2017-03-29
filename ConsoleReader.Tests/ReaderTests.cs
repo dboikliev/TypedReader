@@ -7,7 +7,7 @@ namespace ConsoleReader.Tests
     [TestClass]
     public class ReaderTests
     {
-        [TestMethod, Timeout(80)]
+        [TestMethod]
         public void Reader_ShouldRead_Int()
         {
             var reader = new StringReader("  123   456   ");

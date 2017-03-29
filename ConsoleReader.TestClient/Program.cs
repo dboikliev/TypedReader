@@ -2,16 +2,16 @@
 
 namespace ConsoleReader.TestClient
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
-            var number = Console.In.Next<decimal>();
-            var number2 = Console.In.Next<decimal>('|');
-            var number3 = Console.In.Next<decimal>('|');
+            var number = Console.In.Next<decimal>(' ');
+            var number2 = Console.In.Next<string>(true, '|', '#' );
+            var number3 = Console.In.Next<string>(false, '|', '#' );
             Console.WriteLine(number);
-            Console.WriteLine(number2);
-            Console.WriteLine(number3);
+            Console.WriteLine($"\"{number2}\"");
+            Console.WriteLine($"\"{number3}\"");
         }
     }
 }

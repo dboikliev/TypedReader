@@ -5,7 +5,7 @@
         /// <summary>
         /// The character by which the user input will be split.
         /// </summary>
-        public char Separator { get; set; } = ' ';
+        public char[] Separators { get; set; } = { ' ' };
 
         /// <summary>
         /// Flag which indicates whether to ignore the whitespace symbols

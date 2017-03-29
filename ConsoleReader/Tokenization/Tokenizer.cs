@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace ConsoleReader.Tokenization
@@ -35,7 +36,7 @@ namespace ConsoleReader.Tokenization
 
 
                     isTokenizing &= characterCategory != UnicodeCategory.OtherNotAssigned;
-                    if ((!options.IgnoreWhiteSpace && char.IsWhiteSpace(character)) || character == options.Separator)
+                    if ((!options.IgnoreWhiteSpace && char.IsWhiteSpace(character)) || options.Separators.Contains(character))
                     {
                         if (hasReachedToken)
                         {
