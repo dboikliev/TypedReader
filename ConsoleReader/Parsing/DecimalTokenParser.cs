@@ -1,6 +1,6 @@
 ﻿namespace ConsoleReader.Parsing
 {
-    sealed class DecimalTokenParser : ITokenParser<decimal>
+    internal sealed class DecimalTokenParser : ITokenParser<decimal>
     {
         public decimal Parse(string token)
         {

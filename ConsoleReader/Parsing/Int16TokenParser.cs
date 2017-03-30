@@ -1,6 +1,6 @@
 ﻿namespace ConsoleReader.Parsing
 {
-    sealed class Int16TokenParser : ITokenParser<short>
+    internal sealed class Int16TokenParser : ITokenParser<short>
     {
         public short Parse(string token)
         {

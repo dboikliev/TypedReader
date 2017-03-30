@@ -1,6 +1,6 @@
 ﻿namespace ConsoleReader.Parsing
 {
-    sealed class Int64TokenParser : ITokenParser<long>
+    internal sealed class Int64TokenParser : ITokenParser<long>
     {
         public long Parse(string token)
         {

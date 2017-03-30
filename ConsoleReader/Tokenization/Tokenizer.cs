@@ -16,18 +16,14 @@ namespace ConsoleReader.Tokenization
             while (isTokenizing)
             {
                 var character = (char)reader.Read();
-                if (character < 0)
-                {
-                    isTokenizing = false;
-                }
-                else
+                if (character >= 0)
                 {
                     var characterCategory = char.GetUnicodeCategory(character);
                     while (characterCategory != UnicodeCategory.OtherNotAssigned &&
-                        Environment.NewLine.Length > 1 &&
-                        Environment.NewLine.StartsWith(character.ToString()))
+                           Environment.NewLine.Length > 1 &&
+                           Environment.NewLine.StartsWith(character.ToString()))
                     {
-                        character = (char)reader.Read();
+                        character = (char) reader.Read();
                         if (hasReachedToken)
                         {
                             isTokenizing = false;
@@ -36,7 +32,8 @@ namespace ConsoleReader.Tokenization
 
 
                     isTokenizing &= characterCategory != UnicodeCategory.OtherNotAssigned;
-                    if ((!options.IgnoreWhiteSpace && char.IsWhiteSpace(character)) || options.Separators.Contains(character))
+                    if (!options.IgnoreWhiteSpace && char.IsWhiteSpace(character) ||
+                        options.Separators.Contains(character))
                     {
                         if (hasReachedToken)
                         {
@@ -49,7 +46,10 @@ namespace ConsoleReader.Tokenization
                         builder.Append(character);
                     }
                 }
-
+                else
+                {
+                    isTokenizing = false;
+                }
             }
 
             var token = builder.ToString();

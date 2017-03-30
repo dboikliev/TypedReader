@@ -1,6 +1,6 @@
 ﻿namespace ConsoleReader.Parsing
 {
-    sealed class DoubleTokenParser : ITokenParser<double>
+    internal sealed class DoubleTokenParser : ITokenParser<double>
     {
         public double Parse(string token)
         {
