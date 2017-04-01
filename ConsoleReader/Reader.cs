@@ -3,6 +3,8 @@ using ConsoleReader.Tokenization;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace ConsoleReader
 {
@@ -13,18 +15,21 @@ namespace ConsoleReader
 
         static Reader()
         {
-            Parsers[typeof(string)] = new StringTokenParser();
-            Parsers[typeof(sbyte)] = new SByteTokenParser();
-            Parsers[typeof(byte)] = new ByteTokenParser();
-            Parsers[typeof(short)] = new Int16TokenParser();
-            Parsers[typeof(ushort)] = new UInt16TokenParser();
-            Parsers[typeof(int)] = new Int32TokenParser();
-            Parsers[typeof(uint)] = new UInt32TokenParser();
-            Parsers[typeof(long)] = new Int64TokenParser();
-            Parsers[typeof(ulong)] = new UInt64TokenParser();
-            Parsers[typeof(float)] = new FloatTokenParser();
-            Parsers[typeof(double)] = new DoubleTokenParser();
-            Parsers[typeof(decimal)] = new DecimalTokenParser();
+            var assemblyTypes = Assembly.GetExecutingAssembly()
+                .GetTypes();
+
+            foreach (var type in assemblyTypes)
+            {
+                var parserInterface = type.GetInterfaces()
+                    .FirstOrDefault(i => i.IsConstructedGenericType && i.GetGenericTypeDefinition() == typeof(ITokenParser<>));
+
+                if (parserInterface != null)
+                {
+                    var parsingType = parserInterface.GenericTypeArguments.First();
+
+                    Parsers[parsingType] = Activator.CreateInstance(type);
+                }
+            }
         }
 
         /// <summary>
