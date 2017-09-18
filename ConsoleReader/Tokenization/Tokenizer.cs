@@ -32,15 +32,13 @@ namespace ConsoleReader.Tokenization
 
 
                     isTokenizing &= characterCategory != UnicodeCategory.OtherNotAssigned;
-                    if (!options.IgnoreWhiteSpace && char.IsWhiteSpace(character) ||
-                        options.Separators.Contains(character))
+                    
+                    if (IsTerminatingCharacter(options, character))
                     {
                         if (hasReachedToken)
-                        {
                             isTokenizing = false;
-                        }
                     }
-                    else if (isTokenizing && !Environment.NewLine.Contains(character.ToString()))
+                    else if (isTokenizing)
                     {
                         hasReachedToken = true;
                         builder.Append(character);
@@ -54,6 +52,15 @@ namespace ConsoleReader.Tokenization
 
             var token = builder.ToString();
             return token;
+        }
+
+        private bool IsTerminatingCharacter(TokenizerOptions options, char character)
+        {
+            var isSeparatingWhiteSpace = !options.IgnoreWhiteSpace && char.IsWhiteSpace(character);
+            var isSeparatorCharacter = options.Separators.Contains(character);
+            var isNewLineCharacter = Environment.NewLine.Contains(character.ToString());
+
+            return isSeparatingWhiteSpace || isSeparatorCharacter || isNewLineCharacter;
         }
     }
 }
