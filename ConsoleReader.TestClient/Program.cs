@@ -2,9 +2,9 @@
 
 namespace ConsoleReader.TestClient
 {
-    internal class Program
+    class Program
     {
-        private static void Main()
+        static void Main()
         {
             var number = Console.In.Next<decimal>();
             var number2 = Console.In.Next<string>(true, '|', '#' );

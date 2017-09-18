@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.IO;
+using Xunit;
 
 namespace ConsoleReader.Tests
 {
-    [TestClass]
     public class ReaderTests
     {
-        [TestMethod]
+        [Fact]
         public void Reader_ShouldRead_Int()
         {
             var reader = new StringReader("  123   456   ");
@@ -16,11 +15,11 @@ namespace ConsoleReader.Tests
             int first = Console.In.Next<int>();
             int second = Console.In.Next<int>();
 
-            Assert.AreEqual(123, first);
-            Assert.AreEqual(456, second);
+            Assert.Equal(123, first);
+            Assert.Equal(456, second);
         }
 
-        [TestMethod, Timeout(80)]
+        [Fact]
         public void Reader_ShouldRead_String()
         {
             var reader = new StringReader("  abc   def   ");
@@ -29,11 +28,11 @@ namespace ConsoleReader.Tests
             string first = Console.In.Next<string>();
             string second = Console.In.Next<string>();
 
-            Assert.AreEqual("abc", first);
-            Assert.AreEqual("def", second);
+            Assert.Equal("abc", first);
+            Assert.Equal("def", second);
         }
 
-        [TestMethod, Timeout(80)]
+        [Fact]
         public void Reader_ShouldRead_MixedTypes()
         {
             var reader = new StringReader("  abc   123   ");
@@ -42,8 +41,8 @@ namespace ConsoleReader.Tests
             string first = Console.In.Next<string>();
             int second = Console.In.Next<int>();
 
-            Assert.AreEqual("abc", first);
-            Assert.AreEqual(123, second);
+            Assert.Equal("abc", first);
+            Assert.Equal(123, second);
         }
     }
 }
