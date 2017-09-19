@@ -23,13 +23,11 @@ namespace ConsoleReader.Tokenization
                            Environment.NewLine.Length > 1 &&
                            Environment.NewLine.StartsWith(character.ToString()))
                     {
-                        character = (char) reader.Read();
+                        character = (char)reader.Read();
+                        
                         if (hasReachedToken)
-                        {
                             isTokenizing = false;
-                        }
                     }
-
 
                     isTokenizing &= characterCategory != UnicodeCategory.OtherNotAssigned;
                     
@@ -54,7 +52,7 @@ namespace ConsoleReader.Tokenization
             return token;
         }
 
-        private bool IsTerminatingCharacter(TokenizerOptions options, char character)
+        private static bool IsTerminatingCharacter(TokenizerOptions options, char character)
         {
             var isSeparatingWhiteSpace = !options.IgnoreWhiteSpace && char.IsWhiteSpace(character);
             var isSeparatorCharacter = options.Separators.Contains(character);
