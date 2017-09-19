@@ -58,7 +58,7 @@ class Program
         Reader.RegisterParser(new FileInfoTokenParser());
 
         //The following calls are interchangeable
-        var file1 = Reader.Next<FileInfo>(Console.In, new TokenizerOptions { Separator = '|' });
+        var file1 = Reader.Next<FileInfo>(Console.In, new TokenizerOptions('|'));
         var file2 = Console.In.Next<FileInfo>('|');
         System.Console.WriteLine($"file1: { file1 }, file2: { file2 }");
     }
