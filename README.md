@@ -66,10 +66,7 @@ class Program
 
 class FileInfoTokenParser : ITokenParser<FileInfo>
 {
-    public FileInfo Parse(string token)
-    {
-        return new FileInfo(token);
-    }
+    public FileInfo Parse(string token) => new FileInfo(token);
 }
 
 ```
