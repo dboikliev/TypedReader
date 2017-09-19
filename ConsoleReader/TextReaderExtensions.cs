@@ -15,11 +15,7 @@ namespace ConsoleReader
         /// <returns></returns>
         public static T Next<T>(this TextReader reader, bool ignoreWhiteSpace = true, params char[] separators)
         {
-            var options = new TokenizerOptions
-            {
-                Separators = separators?.Length == 0 ? new [] { ' ' } : separators,
-                IgnoreWhiteSpace = ignoreWhiteSpace
-            };
+            var options = new TokenizerOptions(ignoreWhiteSpace, separators);
             return Reader.Next<T>(reader, options);
         }
 
@@ -33,11 +29,7 @@ namespace ConsoleReader
         /// <returns></returns>
         public static T Next<T>(this TextReader reader, char separator = ' ', bool ignoreWhiteSpace = true)
         {
-            var options = new TokenizerOptions
-            {
-                Separators = new[] { separator } ,
-                IgnoreWhiteSpace = ignoreWhiteSpace
-            };
+            var options = new TokenizerOptions(ignoreWhiteSpace, separator);
             return Reader.Next<T>(reader, options);
         }
     }

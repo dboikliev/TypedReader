@@ -13,10 +13,7 @@ namespace ConsoleReader.Tests
             var reader = new StringReader("  test1   test2   ");
             var tokenizer = new Tokenizer();
 
-            var options = new TokenizerOptions
-            {
-                Separators = new[] { ' ' }
-            };
+            var options = new TokenizerOptions(' ');
 
             var token1 = tokenizer.Next(reader, options);
             var token2 = tokenizer.Next(reader, options);
@@ -32,10 +29,7 @@ namespace ConsoleReader.Tests
             var reader = new StringReader("|||test1 test2|||test3 test4||");
             var tokenizer = new Tokenizer();
 
-            var options = new TokenizerOptions
-            {
-                Separators = new[] { '|' }
-            };
+            var options = new TokenizerOptions('|');
 
             var token1 = tokenizer.Next(reader, options);
             var token2 = tokenizer.Next(reader, options);
@@ -50,10 +44,7 @@ namespace ConsoleReader.Tests
             var reader = new StringReader("|||test1 test2|||" + Environment.NewLine + "||test3 test4");
             var tokenizer = new Tokenizer();
 
-            var options = new TokenizerOptions
-            {
-                Separators = new[] { '|' }
-            };
+            var options = new TokenizerOptions('|');
 
             var token1 = tokenizer.Next(reader, options);
             var token2 = tokenizer.Next(reader, options);
@@ -74,10 +65,7 @@ namespace ConsoleReader.Tests
                                           "  || || ");
             var tokenizer = new Tokenizer();
 
-            var options = new TokenizerOptions
-            {
-                Separators = new[] { '|' }
-            };
+            var options = new TokenizerOptions('|');
 
             var token1 = tokenizer.Next(reader, options);
             var token2 = tokenizer.Next(reader, options);
