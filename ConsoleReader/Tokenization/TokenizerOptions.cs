@@ -1,7 +1,11 @@
-﻿namespace ConsoleReader.Tokenization
+﻿using System.ComponentModel;
+
+namespace ConsoleReader.Tokenization
 {
     public class TokenizerOptions
     {
+        public static readonly TokenizerOptions Default = new TokenizerOptions();
+        
         /// <summary>
         /// The character by which the user input will be split.
         /// </summary>

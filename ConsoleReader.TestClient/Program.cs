@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace ConsoleReader.TestClient
 {
@@ -6,10 +7,9 @@ namespace ConsoleReader.TestClient
     {
         static void Main()
         {
-            var number = Console.In.Next<decimal>();
-            var boolean = Console.In.Next<bool>();
-            Console.WriteLine(number);
-            Console.WriteLine(boolean);
+            var a = Console.In.Next<int>();
+            var b = Console.In.Next<float>();
+            var c = Console.In.Next<bool>();
         }
     }
 }
