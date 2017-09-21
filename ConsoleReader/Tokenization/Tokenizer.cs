@@ -18,19 +18,17 @@ namespace ConsoleReader.Tokenization
                 var character = (char)reader.Read();
                 if (character >= 0)
                 {
-                    var characterCategory = char.GetUnicodeCategory(character);
-                    while (characterCategory != UnicodeCategory.OtherNotAssigned &&
-                           Environment.NewLine.Length > 1 &&
-                           Environment.NewLine.StartsWith(character.ToString()))
+                    while (ShouldIgnore(character))
                     {
                         character = (char)reader.Read();
-                        
+
                         if (hasReachedToken)
                             isTokenizing = false;
                     }
 
-                    isTokenizing &= characterCategory != UnicodeCategory.OtherNotAssigned;
-                    
+                    isTokenizing &= char.GetUnicodeCategory(character)
+                        != UnicodeCategory.OtherNotAssigned;
+
                     if (IsTerminatingCharacter(options, character))
                     {
                         if (hasReachedToken)
@@ -50,6 +48,13 @@ namespace ConsoleReader.Tokenization
 
             var token = builder.ToString();
             return token;
+        }
+
+        private static bool ShouldIgnore(char character)
+        {
+            return char.GetUnicodeCategory(character) != UnicodeCategory.OtherNotAssigned &&
+                                       Environment.NewLine.Length > 1 &&
+                                       Environment.NewLine.StartsWith(character.ToString());
         }
 
         private static bool IsTerminatingCharacter(TokenizerOptions options, char character)

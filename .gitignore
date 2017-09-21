@@ -246,3 +246,4 @@ ModelManifest.xml
 nano*
 .vscode/*/**
 .vscode/
+.DS_Store
