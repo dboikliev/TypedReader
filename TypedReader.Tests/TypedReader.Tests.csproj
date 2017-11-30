@@ -6,8 +6,8 @@
     <ProjectGuid>{D54984E2-9A9A-45DB-BDE5-D1B036A8ADCE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleReader.Tests</RootNamespace>
-    <AssemblyName>ConsoleReader.Tests</AssemblyName>
+    <RootNamespace>TypedReader.Tests</RootNamespace>
+    <AssemblyName>TypedReader.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -63,9 +63,9 @@
     <Compile Include="TokenizerTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleReader\ConsoleReader.csproj">
+    <ProjectReference Include="..\ConsoleReader\TypedReader.csproj">
       <Project>{32C3343C-4B34-417A-B8C2-E4E1C348E7F1}</Project>
-      <Name>ConsoleReader</Name>
+      <Name>TypedReader</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

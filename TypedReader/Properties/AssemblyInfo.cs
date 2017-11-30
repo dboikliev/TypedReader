@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ConsoleReader")]
-[assembly: AssemblyDescription("A small library providing a streamlined interface for reading different types of inputs from the console. Similar in functionality to C++'s std::cin and Java.util.Scanner.nextInt(), Java.util.Scanner.nextFloat(), etc.")]
+[assembly: AssemblyTitle("TypedReader")]
+[assembly: AssemblyDescription("A small library providing a streamlined interface for reading different types of inputs from instances of TextReader. Similar in functionality to C++'s std::cin and Java.util.Scanner.nextInt(), Java.util.Scanner.nextFloat(), etc.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Deyan Boikliev")]
-[assembly: AssemblyProduct("ConsoleReader")]
+[assembly: AssemblyProduct("TypedReader")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -35,4 +35,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-[assembly: InternalsVisibleTo("ConsoleReader.Tests")]
+[assembly: InternalsVisibleTo("TypedReader.Tests")]

@@ -2,7 +2,7 @@
 using System.IO;
 using Xunit;
 
-namespace ConsoleReader.Tests
+namespace TypedReader.Tests
 {
     public class ReaderTests
     {
@@ -11,9 +11,10 @@ namespace ConsoleReader.Tests
         {
             var reader = new StringReader("  123   456   ");
             Console.SetIn(reader);
-            
-            int first = Console.In.Next<int>();
-            int second = Console.In.Next<int>();
+
+            var console = new Reader(Console.In);
+            int first = console.Next<int>();
+            int second = console.Next<int>();
 
             Assert.Equal(123, first);
             Assert.Equal(456, second);
@@ -25,8 +26,9 @@ namespace ConsoleReader.Tests
             var reader = new StringReader("  abc   def   ");
             Console.SetIn(reader);
 
-            string first = Console.In.Next<string>();
-            string second = Console.In.Next<string>();
+            var console = new Reader(Console.In);
+            string first = console.Next<string>();
+            string second = console.Next<string>();
 
             Assert.Equal("abc", first);
             Assert.Equal("def", second);
@@ -38,8 +40,9 @@ namespace ConsoleReader.Tests
             var reader = new StringReader("  abc   123   ");
             Console.SetIn(reader);
 
-            string first = Console.In.Next<string>();
-            int second = Console.In.Next<int>();
+            var console = new Reader(Console.In);
+            string first = console.Next<string>();
+            int second = console.Next<int>();
 
             Assert.Equal("abc", first);
             Assert.Equal(123, second);

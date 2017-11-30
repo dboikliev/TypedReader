@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ConsoleReader.Parsing
+﻿namespace TypedReader.Parsing
 {
     public class BoolTokenParser : ITokenParser<bool>
     {

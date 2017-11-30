@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace ConsoleReader.Tokenization
+namespace TypedReader.Tokenization
 {
-    internal class Tokenizer
+    internal static class Tokenizer
     {
-        public string Next(TextReader reader, TokenizerOptions options)
+        public static string Next(TextReader reader, TokenizerOptions options)
         {
             var builder = new StringBuilder();
             var isTokenizing = true;

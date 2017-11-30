@@ -1,4 +1,4 @@
-﻿namespace ConsoleReader.Parsing
+﻿namespace TypedReader.Parsing
 {
     public interface ITokenParser<T>
     {
