@@ -1,9 +1,9 @@
-﻿using ConsoleReader.Tokenization;
-using System;
+﻿using System;
 using System.IO;
+using TypedReader.Tokenization;
 using Xunit;
 
-namespace ConsoleReader.Tests
+namespace TypedReader.Tests
 {
     public class TokenizerTests
     {
@@ -11,12 +11,11 @@ namespace ConsoleReader.Tests
         public void Tokenizer_ShouldIgnore_SpaceSaparator()
         {
             var reader = new StringReader("  test1   test2   ");
-            var tokenizer = new Tokenizer();
 
             var options = new TokenizerOptions(' ');
 
-            var token1 = tokenizer.Next(reader, options);
-            var token2 = tokenizer.Next(reader, options);
+            var token1 = Tokenizer.Next(reader, options);
+            var token2 = Tokenizer.Next(reader, options);
 
             Assert.Equal("test1", token1);
             Assert.Equal("test2", token2);
@@ -27,12 +26,11 @@ namespace ConsoleReader.Tests
         public void Tokenizer_ShouldIgnore_SymbolSaparator()
         {
             var reader = new StringReader("|||test1 test2|||test3 test4||");
-            var tokenizer = new Tokenizer();
 
             var options = new TokenizerOptions('|');
 
-            var token1 = tokenizer.Next(reader, options);
-            var token2 = tokenizer.Next(reader, options);
+            var token1 = Tokenizer.Next(reader, options);
+            var token2 = Tokenizer.Next(reader, options);
 
             Assert.Equal("test1 test2", token1);
             Assert.Equal("test3 test4", token2);
@@ -42,12 +40,11 @@ namespace ConsoleReader.Tests
         public void Tokenizer_ShouldIgnore_NewLineSymbols()
         {
             var reader = new StringReader("|||test1 test2|||" + Environment.NewLine + "||test3 test4");
-            var tokenizer = new Tokenizer();
 
             var options = new TokenizerOptions('|');
 
-            var token1 = tokenizer.Next(reader, options);
-            var token2 = tokenizer.Next(reader, options);
+            var token1 = Tokenizer.Next(reader, options);
+            var token2 = Tokenizer.Next(reader, options);
 
             Assert.Equal("test1 test2", token1);
             Assert.Equal("test3 test4", token2);
@@ -63,12 +60,11 @@ namespace ConsoleReader.Tests
                                            Environment.NewLine +
                                            Environment.NewLine +
                                           "  || || ");
-            var tokenizer = new Tokenizer();
 
             var options = new TokenizerOptions('|');
 
-            var token1 = tokenizer.Next(reader, options);
-            var token2 = tokenizer.Next(reader, options);
+            var token1 = Tokenizer.Next(reader, options);
+            var token2 = Tokenizer.Next(reader, options);
 
             Assert.Equal("test1 test2", token1);
             Assert.Equal("test3 test4", token2);

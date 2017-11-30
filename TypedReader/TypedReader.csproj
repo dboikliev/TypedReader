@@ -7,8 +7,8 @@
     <ProjectGuid>{32C3343C-4B34-417A-B8C2-E4E1C348E7F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleReader</RootNamespace>
-    <AssemblyName>ConsoleReader</AssemblyName>
+    <RootNamespace>TypedReader</RootNamespace>
+    <AssemblyName>TypedReader</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -56,9 +56,11 @@
     <Compile Include="Parsing\ITokenParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reader.cs" />
-    <Compile Include="TextReaderExtensions.cs" />
     <Compile Include="Tokenization\Tokenizer.cs" />
     <Compile Include="Tokenization\TokenizerOptions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

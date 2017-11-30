@@ -1,4 +1,4 @@
-﻿namespace ConsoleReader.Parsing
+﻿namespace TypedReader.Parsing
 {
     internal sealed class Int64TokenParser : ITokenParser<long>
     {

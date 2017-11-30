@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace ConsoleReader.Tokenization
+﻿namespace TypedReader.Tokenization
 {
     public class TokenizerOptions
     {

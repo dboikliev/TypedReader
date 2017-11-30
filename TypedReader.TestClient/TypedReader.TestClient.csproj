@@ -7,8 +7,8 @@
     <ProjectGuid>{848E4A01-5250-4046-8F13-B0435361322A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleReader.TestClient</RootNamespace>
-    <AssemblyName>ConsoleReader.TestClient</AssemblyName>
+    <RootNamespace>TypedReader.TestClient</RootNamespace>
+    <AssemblyName>TypedReader.TestClient</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleReader\ConsoleReader.csproj">
+    <ProjectReference Include="..\ConsoleReader\TypedReader.csproj">
       <Project>{32c3343c-4b34-417a-b8c2-e4e1c348e7f1}</Project>
-      <Name>ConsoleReader</Name>
+      <Name>TypedReader</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

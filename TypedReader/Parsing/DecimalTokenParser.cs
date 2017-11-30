@@ -1,4 +1,4 @@
-﻿namespace ConsoleReader.Parsing
+﻿namespace TypedReader.Parsing
 {
     internal sealed class DecimalTokenParser : ITokenParser<decimal>
     {
