@@ -1,5 +1,6 @@
 ﻿
 using System;
+using TypedReader.Extensions;
 
 namespace TypedReader.TestClient
 {
@@ -7,9 +8,7 @@ namespace TypedReader.TestClient
     {
         static void Main()
         {
-            var reader = new Reader(Console.In);
-
-            reader.Next<int>();
+            Console.In.Next<int>();
         }
     }
 }

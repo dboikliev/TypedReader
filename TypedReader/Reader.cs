@@ -8,7 +8,7 @@ using TypedReader.Tokenization;
 
 namespace TypedReader
 {
-    public class Reader
+    public static class Reader
     {
         private static readonly Dictionary<Type, object> Parsers = new Dictionary<Type, object>();
 
@@ -32,21 +32,16 @@ namespace TypedReader
             }
         }
 
-        private readonly TextReader _reader;
-
-        public Reader(TextReader reader)
-        {
-            _reader = reader;
-        }
-
         /// <summary>
         /// Parses the next token into the specified type <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The desired type of the next element.</typeparam>
+        /// <param name="textReader">A <code>TextReader</code> instance from whcih data will be read.</param>
+        /// <param name="options">Options which control the way tokenization is performed.</param>
         /// <returns>Returns the token parsed as an instance of the specified type <typeparamref name="T"/>.</returns>
-        public T Next<T>(TokenizerOptions options = null)
+        public static T Next<T>(TextReader textReader, TokenizerOptions options = null)
         {
-            var token = Tokenizer.Next(_reader, options ?? TokenizerOptions.Default);
+            var token = Tokenizer.Next(textReader, options ?? TokenizerOptions.Default);
             var parsed = ((ITokenParser<T>)Parsers[typeof(T)]).Parse(token);
             return parsed;
         }
