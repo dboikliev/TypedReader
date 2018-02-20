@@ -14,10 +14,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        var console = new Reader(Console.In);
-        var a = console.Next<byte>();
-        var b = console.Next<int>();
-        var text = console.Next<string>();
+        var a = Console.In.Next<byte>();
+        var b = Console.In.Next<int>();
+        var text = Console.In.Next<string>();
         Console.WriteLine($"a: { a }, b: { b }, text: { text }");
     }
 }
@@ -51,10 +50,9 @@ class Program
     {
         Reader.RegisterParser(new FileInfoTokenParser());
 
-        var console = new Reader(Console.In);
         var options = new TokenizerOptions('|');
-        var file1 = console.Next<FileInfo>(options);
-        var file2 = console.Next<FileInfo>(options);
+        var file1 = Console.In.Next<FileInfo>(options);
+        var file2 = Console.In.Next<FileInfo>(options);
         Console.WriteLine($"file1: { file1 }, file2: { file2 }");
     }
 }
