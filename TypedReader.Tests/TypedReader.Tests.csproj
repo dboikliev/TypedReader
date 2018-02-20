@@ -64,13 +64,13 @@
     <Compile Include="TokenizerTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleReader\TypedReader.csproj">
-      <Project>{32C3343C-4B34-417A-B8C2-E4E1C348E7F1}</Project>
-      <Name>TypedReader</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\TypedReader\TypedReader.csproj">
+      <Project>{32c3343c-4b34-417a-b8c2-e4e1c348e7f1}</Project>
+      <Name>TypedReader</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
