@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypedReader", "ConsoleReader\TypedReader.csproj", "{32C3343C-4B34-417A-B8C2-E4E1C348E7F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypedReader", "TypedReader\TypedReader.csproj", "{32C3343C-4B34-417A-B8C2-E4E1C348E7F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypedReader.TestClient", "ConsoleReader.TestClient\TypedReader.TestClient.csproj", "{848E4A01-5250-4046-8F13-B0435361322A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypedReader.TestClient", "TypedReader.TestClient\TypedReader.TestClient.csproj", "{848E4A01-5250-4046-8F13-B0435361322A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypedReader.Tests", "ConsoleReader.Tests\TypedReader.Tests.csproj", "{D54984E2-9A9A-45DB-BDE5-D1B036A8ADCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypedReader.Tests", "TypedReader.Tests\TypedReader.Tests.csproj", "{D54984E2-9A9A-45DB-BDE5-D1B036A8ADCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
