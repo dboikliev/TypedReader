@@ -9,6 +9,7 @@ A small library providing a streamlined interface for reading different types of
 
 ```csharp
 using System;
+using TypedReader.Extensions;
 
 class Program
 {
@@ -41,8 +42,10 @@ a: 123, b: 456789, text: SomeText
 ```csharp
 using System;
 using System.IO;
-using ConsoleReader.Parsing;
-using ConsoleReader.Tokenization;
+using TypedReader;
+using TypedReader.Extensions;
+using TypedReader.Parsing;
+using TypedReader.Tokenization;
 
 class Program
 {
