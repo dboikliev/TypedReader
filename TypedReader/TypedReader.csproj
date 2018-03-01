@@ -7,7 +7,7 @@
     <Description>A small library providing a streamlined interface for reading different types of inputs from instances of TextReader. Similar in functionality to C++'s std::cin and Java.util.Scanner.nextInt(), Java.util.Scanner.nextFloat(), etc.</Description>
     <RepositoryUrl>https://github.com/dboikliev/TypedReader</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/dboikliev/TypedReader/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/dboikliev/TypedReader/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/dboikliev/TypedReader</PackageProjectUrl>
   </PropertyGroup>
 </Project>
