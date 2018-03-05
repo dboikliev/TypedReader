@@ -1,24 +1,18 @@
 ﻿using System;
-using System.IO;
-using TypedReader;
+using System.Collections.Generic;
 using TypedReader.Extensions;
-using TypedReader.Parsing;
-using TypedReader.Tokenization;
 
-class Program
+namespace TypedReader.TestClient
 {
-    static void Main(string[] args)
+    class Program
     {
-        Reader.RegisterParser(new FileInfoTokenParser());
+        static void Main()
+        {
+            IEnumerable<int> input = Console.In.Next<int>(5);
+            IEnumerable<string> input2 = Console.In.Next<string>(3);
 
-        var options = new TokenizerOptions('|');
-        var file1 = Console.In.Next<FileInfo>(options);
-        var file2 = Console.In.Next<FileInfo>(options);
-        Console.WriteLine($"file1: { file1 }, file2: { file2 }");
+            Console.WriteLine(string.Join(",", input));
+            Console.WriteLine(string.Join(",", input2));
+        }
     }
-}
-
-class FileInfoTokenParser : ITokenParser<FileInfo>
-{
-    public FileInfo Parse(string token) => new FileInfo(token);
 }
