@@ -1,26 +1,31 @@
-﻿namespace TypedReader.Tokenization
+﻿using System.Collections.ObjectModel;
+
+namespace TypedReader.Tokenization
 {
-    public class TokenizerOptions
+    /// <summary>
+    /// Options for controlling the tokenization of the text reader content.
+    /// </summary>
+    public class Options
     {
-        public static readonly TokenizerOptions Default = new TokenizerOptions();
-        
+        public static readonly Options Default = new Options();
+
         /// <summary>
         /// The character by which the user input will be split.
         /// </summary>
-        public char[] Separators { get; }
+        public ReadOnlyCollection<char> Separators { get; }
 
         /// <summary>
         /// Flag which indicates whether to ignore the whitespace symbols
         /// </summary>
         public bool IgnoreWhiteSpace { get; }
 
-        public TokenizerOptions(params char[] separators) : this(true, separators)
+        public Options(params char[] separators) : this(true, separators)
         {
         }
-        
-        public TokenizerOptions(bool ignoreWhiteSpace, params char[] separators)
+
+        public Options(bool ignoreWhiteSpace, params char[] separators)
         {
-            Separators = separators.Length == 0 ? new [] {' '} : separators;
+            Separators = new ReadOnlyCollection<char>(separators.Length == 0 ? new[] { ' ' } : separators);
             IgnoreWhiteSpace = ignoreWhiteSpace;
         }
     }

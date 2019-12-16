@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using TypedReader.Extensions;
 using Xunit;
 
 namespace TypedReader.Tests
@@ -13,8 +12,9 @@ namespace TypedReader.Tests
             var reader = new StringReader("  123   456   ");
             Console.SetIn(reader);
 
-            int first = Console.In.Next<int>();
-            int second = Console.In.Next<int>();
+            var typedReader = new Reader(Console.In);
+            int first = typedReader.Next<int>();
+            int second = typedReader.Next<int>();
 
             Assert.Equal(123, first);
             Assert.Equal(456, second);
@@ -26,8 +26,9 @@ namespace TypedReader.Tests
             var reader = new StringReader("  abc   def   ");
             Console.SetIn(reader);
 
-            string first = Console.In.Next<string>();
-            string second = Console.In.Next<string>();
+            var typedReader = new Reader(Console.In);
+            string first = typedReader.Next<string>();
+            string second = typedReader.Next<string>();
 
             Assert.Equal("abc", first);
             Assert.Equal("def", second);
@@ -39,8 +40,9 @@ namespace TypedReader.Tests
             var reader = new StringReader("  abc   123   ");
             Console.SetIn(reader);
 
-            string first = Console.In.Next<string>();
-            int second = Console.In.Next<int>();
+            var typedReader = new Reader(Console.In);
+            string first = typedReader.Next<string>();
+            int second = typedReader.Next<int>();
 
             Assert.Equal("abc", first);
             Assert.Equal(123, second);

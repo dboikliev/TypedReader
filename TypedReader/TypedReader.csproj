@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Deyan Boikliev</Authors>
     <Company />
     <Description>A small library providing a streamlined interface for reading different types of inputs from instances of TextReader. Similar in functionality to C++'s std::cin and Java.util.Scanner.nextInt(), Java.util.Scanner.nextFloat(), etc.</Description>

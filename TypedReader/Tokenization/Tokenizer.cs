@@ -1,43 +1,74 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace TypedReader.Tokenization
 {
-    internal static class Tokenizer
+    internal sealed class Tokenizer : IDisposable
     {
-        public static string Next(TextReader reader, TokenizerOptions options)
+        internal const short BufferSize = 4096;
+        private readonly TextReader _reader;
+        private readonly Options _options;
+        private readonly char[] _block = new char[BufferSize];
+        private int? _remainingChars;
+        private int? _startIndex;
+
+        public Tokenizer(TextReader reader, Options options)
         {
-            var builder = new StringBuilder();
+            _reader = reader;
+            _options = options;
+        }
+
+
+        public string Next()
+        {
             var isTokenizing = true;
             var hasReachedToken = false;
+
+            int current = _startIndex.GetValueOrDefault(0);
+            if (_remainingChars.GetValueOrDefault(-1) <= 0)
+            {
+                _remainingChars = _reader.ReadBlock(_block);
+                current = 0;
+                _startIndex = 0;
+            }
+
+            StringBuilder _builder = new StringBuilder(64);
             while (isTokenizing)
             {
-                var character = (char)reader.Read();
-                if (character >= 0)
+                if (_remainingChars <= 0)
                 {
-                    while (ShouldIgnore(character))
-                    {
-                        character = (char)reader.Read();
+                    Array.Clear(_block, 0, _block.Length);
+                    _remainingChars = _reader.ReadBlock(_block);
+                    current = 0;
+                }
 
-                        if (hasReachedToken)
-                            isTokenizing = false;
-                    }
+                if (_remainingChars > 0)
+                {
+                    ref var character = ref _block[current++];
+                    _remainingChars--;
+
 
                     isTokenizing &= char.GetUnicodeCategory(character)
                         != UnicodeCategory.OtherNotAssigned;
 
-                    if (IsTerminatingCharacter(options, character))
+                    var isTerminatingCharacter = character == '\0'
+                        || !_options.IgnoreWhiteSpace && char.IsWhiteSpace(character) // is separating whitespace
+                        || _options.Separators.Contains(character)
+                        || character == '\r' || character == '\n'; // is new line
+
+                    if (isTerminatingCharacter)
                     {
                         if (hasReachedToken)
+                        {
                             isTokenizing = false;
+                        }
                     }
                     else if (isTokenizing)
                     {
                         hasReachedToken = true;
-                        builder.Append(character);
+                        _builder.Append(character);
                     }
                 }
                 else
@@ -46,24 +77,14 @@ namespace TypedReader.Tokenization
                 }
             }
 
-            var token = builder.ToString();
-            return token;
+            _startIndex = current;
+
+            return _builder.ToString();
         }
 
-        private static bool ShouldIgnore(char character)
+        public void Dispose()
         {
-            return char.GetUnicodeCategory(character) != UnicodeCategory.OtherNotAssigned &&
-                                       Environment.NewLine.Length > 1 &&
-                                       Environment.NewLine.StartsWith(character.ToString());
-        }
-
-        private static bool IsTerminatingCharacter(TokenizerOptions options, char character)
-        {
-            var isSeparatingWhiteSpace = !options.IgnoreWhiteSpace && char.IsWhiteSpace(character);
-            var isSeparatorCharacter = options.Separators.Contains(character);
-            var isNewLineCharacter = Environment.NewLine.Contains(character.ToString());
-
-            return isSeparatingWhiteSpace || isSeparatorCharacter || isNewLineCharacter;
+            _reader.Dispose();
         }
     }
 }
