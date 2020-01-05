@@ -3,15 +3,24 @@ using BenchmarkDotNet.Running;
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using TypedReader.Extensions;
+using TypedReader.Parsing;
 
 namespace TypedReader.TestClient
 {
-    [RPlotExporter, RankColumn, InProcess]
+    [InProcess]
     public class TypedReaderVsDefault
     {
+        class Int32Parser : ITokenParser<int>
+        {
+            public int Parse(string token)
+            {
+                return int.Parse(token);
+            }
+        }
 
-        [Params(1, 10, 100, 1000, 10000, 100000)]
+        [Params(1000, 10000)]
         public int N;
 
         private string input;
@@ -23,32 +32,53 @@ namespace TypedReader.TestClient
         }
 
         [Benchmark]
-        public void WithoutTypedReader()
+        public int StringReader()
         {
-            Console.SetIn(new StringReader(input));
+            var reader = new StringReader(input);
             int total = 0;
             unchecked
             {
                 for (int i = 0; i < N; i++)
                 {
-                    total += int.Parse(Console.ReadLine());
+                    total += int.Parse(reader.ReadLine());
                 }
             }
+            return total;
         }
 
         [Benchmark]
-        public void WithTypedReader()
+        public int TypedReader()
         {
-            Console.SetIn(new StringReader(input));
+            var reader = new StringReader(input);
             int total = 0;
+            Reader.RegisterParser<int>(null);
             unchecked
             {
-                var reader = Console.In.AsTyped();
+                var typedReader = reader.AsTyped();
                 for (int i = 0; i < N; i++)
                 {
-                    total += reader.Next<int>();
+                    total += typedReader.Next<int>();
                 }
             }
+            return total;
+        }
+
+
+        [Benchmark]
+        public int TypedReaderWithRegisteredParser()
+        {
+            var reader = new StringReader(input);
+            int total = 0;
+            Reader.RegisterParser(new Int32Parser());
+            unchecked
+            {
+                var typedReader = reader.AsTyped();
+                for (int i = 0; i < N; i++)
+                {
+                    total += typedReader.Next<int>();
+                }
+            }
+            return total;
         }
     }
 

@@ -34,12 +34,11 @@ namespace TypedReader.Tokenization
                 _startIndex = 0;
             }
 
-            StringBuilder _builder = new StringBuilder(64);
+            var builder = new StringBuilder(64);
             while (isTokenizing)
             {
                 if (_remainingChars <= 0)
                 {
-                    Array.Clear(_block, 0, _block.Length);
                     _remainingChars = _reader.ReadBlock(_block);
                     current = 0;
                 }
@@ -68,7 +67,7 @@ namespace TypedReader.Tokenization
                     else if (isTokenizing)
                     {
                         hasReachedToken = true;
-                        _builder.Append(character);
+                        builder.Append(character);
                     }
                 }
                 else
@@ -79,7 +78,7 @@ namespace TypedReader.Tokenization
 
             _startIndex = current;
 
-            return _builder.ToString();
+            return builder.ToString();
         }
 
         public void Dispose()
